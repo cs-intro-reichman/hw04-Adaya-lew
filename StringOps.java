@@ -1,4 +1,4 @@
-public class StringOps {
+public class Main {
     ////////////////////////////////////////////////////////////
     //////                                               ///////
     //////              Reminder:                        ///////
@@ -22,21 +22,91 @@ public class StringOps {
     //////                                               ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
-        
+        System.out.println(capVowelsLowRest("One two tHRee world"));
     }
 
     public static String capVowelsLowRest (String string) {
-        // Write your code here:
-        return "";
+        String  vowels = "aioueAIOUE";
+        String res = "";
+        int size = string.length();
+
+        for (int i = 0; i < size; i++){
+            char ch = string.charAt(i);
+            if(ch == ' '){
+                res = res + ch;
+            }
+            else if(vowels.indexOf(ch) != -1){
+                if(ch >='A' && ch <='Z') {
+                    res = res + ch;
+                }
+                else{
+                    res = res +  (char) (ch - ('a' - 'A'));
+                }
+            }
+            else{
+                if(ch >='a' && ch <='z') {
+                    res = res + ch;
+                }
+                else{
+                    res = res +  (char) (ch + ('a' - 'A'));
+                }
+            }
+        }
+        return res;
     }
 
-    public static String camelCase (String string) {
-        // Write your code here:
-        return "";
+    public static String camelCase(String input) {
+        String[] words = input.split("\\s+");
+        
+        if (words.length == 0) {
+            return "";
+        }
+
+        // Rule 1: Convert the first word to lowercase
+        words[0] = words[0].toLowerCase();
+
+        // Rule 2: Capitalize the first letter of each word and make the rest lowercase
+        for (int i = 0; i < words.length; i++) {
+            words[i] = capitalizeFirstLetter(words[i].toLowerCase());
+        }
+
+        // Rule 3: Remove spaces and join the words
+        return String.join("", words);
     }
 
-    public static int[] allIndexOf (String string, char chr) {
-        // Write your code here:
-        return new int[1];
+    private static String capitalizeFirstLetter(String word) {
+        if (word.isEmpty()) {
+            return "";
+        }
+        return Character.toUpperCase(word.charAt(0)) + word.substring(1);
+    }
+
+
+    public static int[] allIndexOf(String input, char character) {
+        List<Integer> indexes = new ArrayList<>();
+
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == character) {
+                indexes.add(i);
+            }
+        }
+
+        int[] result = new int[indexes.size()];
+        for (int i = 0; i < indexes.size(); i++) {
+            result[i] = indexes.get(i);
+        }
+
+        return result;
+    }
+
+    private static void printArray(int[] arr) {
+        System.out.print("output: {");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("}");
     }
 }
