@@ -28,7 +28,7 @@ public class Main {
 public class StringOps {
 
     public static String capVowelsLowRest(String string) {
-        String vowels = "aeiouAEIOU";
+        String vowels = "aeiou";
         StringBuilder res = new StringBuilder();
         int size = string.length();
 
