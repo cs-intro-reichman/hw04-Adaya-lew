@@ -25,70 +25,92 @@ public class Main {
         
     }
         public static String capVowelsLowRest(String string) {
-            String vowels = "aioue";
-            StringBuilder res = new StringBuilder();
-            int size = string.length();
+        String vowels = "aioue";
+        String res = "";
+        int size = string.length();
 
-            for (int i = 0; i < size; i++) {
-                char ch = string.charAt(i);
-                if (ch == ' ') {
-                    res.append(ch);
-                } else if (vowels.indexOf(ch) != -1) {
-                    if (ch >= 'A' && ch <= 'Z') {
-                        res.append((char) (ch + ('a' - 'A')));
-                    } else {
-                        res.append(ch);
-                    }
+        for (int i = 0; i < size; i++) {
+            char ch = string.charAt(i);
+            if (ch == ' ') {
+                res = res + ch;
+            } else if (vowels.indexOf(ch) != -1) {
+                if (ch >= 'A' && ch <= 'Z') {
+                    res = res + (char) (ch + ('a' - 'z'));
                 } else {
-                    if (ch >= 'a' && ch <= 'z') {
-                        res.append((char) (ch + ('A' - 'a')));
-                    } else {
-                        res.append(ch);
-                    }
+                    res = res + ch;
                 }
-            }
-            return res.toString();
-        }
-
-        public static String camelCase(String string) {
-            StringBuilder res = new StringBuilder();
-            boolean isFirst = true;
-
-            for (int i = 0; i < string.length(); i++) {
-                char ch = string.charAt(i);
-
-                if (ch == ' ') {
-                    isFirst = true;
+            } else {
+                if (ch >= 'a' && ch <= 'z') {
+                    res = res + (char) (ch + ('A' - 'Z'));
                 } else {
-                    if (isFirst) {
-                        res.append(Character.toLowerCase(ch));
-                        isFirst = false;
-                    } else {
-                        res.append(Character.toUpperCase(ch));
-                    }
+                    res = res + ch;
                 }
             }
-
-            return res.toString();
         }
-
-        public static int[] allIndexOf(String input, char character) {
-            List<Integer> indexes = new ArrayList<>();
-
-            for (int i = 0; i < input.length(); i++) {
-                if (input.charAt(i) == character) {
-                    indexes.add(i);
-                }
-            }
-
-            int[] arr = new int[indexes.size()];
-            for (int i = 0; i < indexes.size(); i++) {
-                arr[i] = indexes.get(i);
-            }
-
-            return arr;
-        }
+        return res;
     }
+
+
+
+    public static String camelCase(String string) {
+        boolean isCapitalLetter = false;
+        boolean isFirst = false;
+        String res = "";
+
+        for (int i = 0; i < string.length(); i++) {
+            if (!isFirst && string.charAt(i) != ' ') {
+                res += lowerCase(string.charAt(i));
+                isFirst = true;
+                isCapitalLetter = false;
+                continue;
+            }
+            if (isCapitalLetter && string.charAt(i) != ' ') {
+                res += upperCase(string.charAt(i));
+                isCapitalLetter = false;
+            } else if (string.charAt(i) != ' ' && !isCapitalLetter) {
+
+                res += lowerCase(string.charAt(i));
+
+            }
+            if (string.charAt(i) == ' ') {
+
+                isCapitalLetter = true;
+            }
+
+
+        }
+        return res;
+
+
+    }
+
+
+    private static String capitalizeFirstLetter(String word) {
+        if (word.isEmpty()) {
+            return "";
+        }
+        return Character.toUpperCase(word.charAt(0)) + word.substring(1);
+    }
+
+
+    public static int[] allIndexOf(String str, char ch) {
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == ch) {
+                count++;
+            }
+        }
+        int[] result = new int[count];
+        int index = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == ch) {
+                result[index++] = i;
+            }
+        }
+
+        return result;
+    }
+}
 
         //private static void printArray(int[] arr) {
           //  System.out.print("output: {");
