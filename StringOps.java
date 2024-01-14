@@ -41,18 +41,18 @@ public class StringOps {
                 if (Character.isUpperCase(ch)) {
                     res.append(ch);
                 } else {
-                    res.append((char) (ch - ('a' - 'A')));
+                    res.append((char) (ch - ('a' - 'z')));
                 }
             } else {
                 if (Character.isLowerCase(ch)) {
                     res.append(ch);
                 } else {
-                    res.append((char) (ch + ('a' - 'A')));
+                    res.append((char) (ch + ('A' - 'Z')));
                 }
             }
         }
 
-        return res.toString();
+        return res;
     }
 }
 
