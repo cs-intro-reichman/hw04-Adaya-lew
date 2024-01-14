@@ -22,7 +22,7 @@ public class Main {
     //////                                               ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
-        System.out.println(capVowelsLowRest("One two tHRee world"));
+        
     }
 
     public static String capVowelsLowRest (String string) {
