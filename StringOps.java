@@ -25,35 +25,34 @@ public class Main {
         
     }
 
-    public static String capVowelsLowRest (String string) {
-        String  vowels = "aioueAIOUE";
-        String res = "";
-        int size = string.length();
+    public static String capVowelsLowRest(String string) {
+    String vowels = "aeiouAEIOU";
+    StringBuilder res = new StringBuilder();
+    int size = string.length();
 
-        for (int i = 0; i < size; i++){
-            char ch = string.charAt(i);
-            if(ch == ' '){
-                res = res + ch;
+    for (int i = 0; i < size; i++) {
+        char ch = string.charAt(i);
+
+        if (ch == ' ') {
+            res.append(ch);
+        } else if (vowels.contains(String.valueOf(ch))) {
+            if (Character.isUpperCase(ch)) {
+                res.append(ch);
+            } else {
+                res.append((char) (ch - ('a' - 'A')));
             }
-            else if(vowels.indexOf(ch) != -1){
-                if(ch >='A' && ch <='Z') {
-                    res = res + ch;
-                }
-                else{
-                    res = res +  (char) (ch - ('a' - 'A'));
-                }
-            }
-            else{
-                if(ch >='a' && ch <='z') {
-                    res = res + ch;
-                }
-                else{
-                    res = res +  (char) (ch + ('a' - 'A'));
-                }
+        } else {
+            if (Character.isLowerCase(ch)) {
+                res.append(ch);
+            } else {
+                res.append((char) (ch + ('a' - 'A')));
             }
         }
-        return res;
     }
+
+    return res.toString();
+}
+
 
     public static String camelCase(String string) {
         boolean isCapitalLetter = false;
