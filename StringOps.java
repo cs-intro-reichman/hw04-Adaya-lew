@@ -55,24 +55,38 @@ public class Main {
         return res;
     }
 
-    public static String camelCase(String input) {
-        String[] words = input.split("\\s+");
-        
-        if (words.length == 0) {
-            return "";
+    public static String camelCase(String string) {
+        boolean isCapitalLetter = false;
+        boolean isFirst = false;
+        String rest = "";
+
+        for (int i = 0; i < string.length(); i++) {
+            if (!isFirst && string.charAt(i) != ' ') {
+                rest += lowerCase(string.charAt(i));
+                isFirst = true;
+                isCapitalLetter = false;
+                continue;
+            }
+            if (isCapitalLetter && string.charAt(i) != ' ') {
+                rest += upperCase(string.charAt(i));
+                isCapitalLetter = false;
+            } else if (string.charAt(i) != ' ' && !isCapitalLetter) {
+
+                res += lowerCase(string.charAt(i));
+
+            }
+            if (string.charAt(i) == ' ') {
+
+                isCapitalLetter = true;
+            }
+
+
         }
+        return rest;
 
-        // Rule 1: Convert the first word to lowercase
-        words[0] = words[0].toLowerCase();
 
-        // Rule 2: Capitalize the first letter of each word and make the rest lowercase
-        for (int i = 0; i < words.length; i++) {
-            words[i] = capitalizeFirstLetter(words[i].toLowerCase());
-        }
-
-        // Rule 3: Remove spaces and join the words
-        return String.join("", words);
     }
+
 
     private static String capitalizeFirstLetter(String word) {
         if (word.isEmpty()) {
