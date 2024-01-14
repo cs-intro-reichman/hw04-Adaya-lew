@@ -25,7 +25,9 @@ public class Main {
         
     }
 
-public static String capVowelsLowRest(String string) {
+public class StringOps {
+
+    public static String capVowelsLowRest(String string) {
         String vowels = "aeiouAEIOU";
         StringBuilder res = new StringBuilder();
         int size = string.length();
@@ -52,7 +54,6 @@ public static String capVowelsLowRest(String string) {
 
         return res.toString();
     }
-
 }
 
 
