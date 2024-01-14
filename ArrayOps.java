@@ -69,18 +69,29 @@ public class ArrayOps {
         return true;
     }
 
-    public static boolean isSorted(int[] array) {
+    public static boolean isSorted(int[] arr) {
+        if (arr.length <= 1) {
+            // An array with 0 or 1 element is considered sorted
+            return true;
+        }
+
         boolean increasing = true;
         boolean decreasing = true;
 
-        for (int i = 0; i < array.length - 1; i++) {
-            if (array[i] > array[i + 1]) {
-                increasing = false;
-            } else if (array[i] < array[i + 1]) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > arr[i - 1]) {
                 decreasing = false;
+            } else if (arr[i] < arr[i - 1]) {
+                increasing = false;
+            }
+
+            // If neither increasing nor decreasing, the array is not sorted
+            if (!increasing && !decreasing) {
+                return false;
             }
         }
 
+        // If either increasing or decreasing is true, the array is sorted
         return increasing || decreasing;
     }
 }
