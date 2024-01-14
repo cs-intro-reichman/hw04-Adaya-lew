@@ -55,17 +55,17 @@ public class Main {
     public static String camelCase(String string) {
         boolean isCapitalLetter = false;
         boolean isFirst = false;
-        String rest = "";
+        String res = "";
 
         for (int i = 0; i < string.length(); i++) {
             if (!isFirst && string.charAt(i) != ' ') {
-                rest += lowerCase(string.charAt(i));
+                res += lowerCase(string.charAt(i));
                 isFirst = true;
                 isCapitalLetter = false;
                 continue;
             }
             if (isCapitalLetter && string.charAt(i) != ' ') {
-                rest += upperCase(string.charAt(i));
+                res += upperCase(string.charAt(i));
                 isCapitalLetter = false;
             } else if (string.charAt(i) != ' ' && !isCapitalLetter) {
 
@@ -79,7 +79,7 @@ public class Main {
 
 
         }
-        return rest;
+        return res;
 
 
     }
@@ -96,28 +96,31 @@ public class Main {
     public static int[] allIndexOf(String input, char character) {
         List<Integer> indexes = new ArrayList<>();
 
-        for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) == character) {
-                indexes.add(i);
+        for (int i = 0; i < string.length(); i++) {
+            if (string.charAt(i) == character) {
+                count++;
             }
         }
 
-        int[] result = new int[indexes.size()];
-        for (int i = 0; i < indexes.size(); i++) {
-            result[i] = indexes.get(i);
-        }
-
-        return result;
-    }
-
-    private static void printArray(int[] arr) {
-        System.out.print("output: {");
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i]);
-            if (i < arr.length - 1) {
-                System.out.print(", ");
+        int[] arr = new int[count];
+        int idx=0;
+        for (int i = 0; i < string.length(); i++) {
+            if (string.charAt(i) == chr) {
+                arr[idx] = i;
+                idx++;
             }
-        }
-        System.out.println("}");
+
+        return res;
     }
-}
+
+        //private static void printArray(int[] arr) {
+          //  System.out.print("output: {");
+           // for (int i = 0; i < arr.length; i++) {
+           //     System.out.print(arr[i]);
+                if (i < arr.length - 1) {
+            //        System.out.print(", ");
+            //    }
+           // }
+          //  System.out.println("}");
+       // }
+    //}
