@@ -25,35 +25,36 @@ public class Main {
         
     }
 
-public class StringOps {
-
-    public static String capVowelsLowRest(String string) {
-        String vowels = "aeiou";
-        StringBuilder res = new StringBuilder();
+public static String capVowelsLowRest (String string) {
+        String  vowels = "aioue";
+        String res = "";
         int size = string.length();
 
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++){
             char ch = string.charAt(i);
-
-            if (ch == ' ') {
-                res.append(ch);
-            } else if (vowels.indexOf(ch) != -1) {
-                if (Character.isUpperCase(ch)) {
-                    res.append(ch);
-                } else {
-                    res.append((char) (ch - ('a' - 'z')));
+            if(ch == ' '){
+                res = res + ch;
+            }
+            else if(vowels.indexOf(ch) != -1){
+                if(ch >='A' && ch <='Z') {
+                    res = res + ch;
                 }
-            } else {
-                if (Character.isLowerCase(ch)) {
-                    res.append(ch);
-                } else {
-                    res.append((char) (ch + ('A' - 'Z')));
+                else{
+                    res = res +  (char) (ch - ('a' - 'z'));
+                }
+            } else{
+                if(vowels.indexOf(ch) == -1){
+                     if(ch >='a' && ch <='z') {
+                    res = res + ch;
                 }
             }
-        }
-
+                else{
+                    res = res +  (char) (ch + ('A' - 'Z'));
+                }
+            }
         return res;
     }
+
 }
 
 
