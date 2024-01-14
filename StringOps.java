@@ -24,38 +24,32 @@ public class Main {
     public static void main(String[] args) {
         
     }
-
-public static String capVowelsLowRest (String string) {
-        String  vowels = "aioue";
+    public static String capVowelsLowRest(String string) {
+        String vowels = "aioue";
         String res = "";
         int size = string.length();
 
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             char ch = string.charAt(i);
-            if(ch == ' '){
+            if (ch == ' ') {
                 res = res + ch;
-            }
-            else if(vowels.indexOf(ch) != -1){
-                if(ch >='A' && ch <='Z') {
+            } else if (vowels.indexOf(ch) != -1) {
+                if (ch >= 'A' && ch <= 'Z') {
+                    res = res + (char) (ch + ('a' - 'A'));
+                } else {
                     res = res + ch;
                 }
-                else{
-                    res = res +  (char) (ch - ('a' - 'z'));
-                }
-            } else{
-                if(vowels.indexOf(ch) == -1){
-                     if(ch >='a' && ch <='z') {
+            } else {
+                if (ch >= 'a' && ch <= 'z') {
+                    res = res + (char) (ch + ('A' - 'a'));
+                } else {
                     res = res + ch;
                 }
             }
-                else{
-                    res = res +  (char) (ch + ('A' - 'Z'));
-                }
-            }
+        }
         return res;
     }
 
-}
 
 
     public static String camelCase(String string) {
