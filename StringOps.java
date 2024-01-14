@@ -35,13 +35,13 @@ public class Main {
                 res = res + ch;
             } else if (vowels.indexOf(ch) != -1) {
                 if (ch >= 'A' && ch <= 'Z') {
-                    res = res + (char) (ch + ('a' - 'A'));
+                    res = res + (char) (ch + ('a' - 'z'));
                 } else {
                     res = res + ch;
                 }
             } else {
                 if (ch >= 'a' && ch <= 'z') {
-                    res = res + (char) (ch + ('A' - 'a'));
+                    res = res + (char) (ch + ('A' - 'Z'));
                 } else {
                     res = res + ch;
                 }
