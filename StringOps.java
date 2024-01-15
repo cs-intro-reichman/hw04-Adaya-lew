@@ -52,53 +52,34 @@ public class StringOps {
  }
 
     public static String camelCase (String string) {
-       String isSolution = " ";
-       int indexOfSpace = string.indexOf(' ');
+        // Write your code here:
+         
+        boolean Cap = false;
+        boolean isFirst = false;
+        String res = "";
 
-       if(indexOfSpace == -1) {
-       for (int i = 0; i < string.length()-1; i++) {
-          char currentChar = string.charAt(i);
-
-         if (currentChar >= 'A' && currentChar <= 'Z') {
-            isSolution +=  (char)(currentChar + 32); 
-         } else { 
-            isSolution += currentChar; 
-         }
-
-        }
-
-    } else{ 
-
-            for (int i = 0; i < indexOfSpace; i++) {
-             char currentChar = string.charAt(i);
-
-         if (currentChar >= 'A' && currentChar <= 'Z') {
-            isSolution +=  (char)(currentChar + 32); 
-         } else { 
-            isSolution += currentChar; 
-         }
-
-        }
-
-        for (int j = 0; j < string.length()-1; j++) {
-          char currentChar = string.charAt(j);
-
-            if(currentChar>0 && string.charAt(currentChar-1) == ' ' && 
-            currentChar >= 'a' && currentChar <= 'z'){
-
-                isSolution += (char)(currentChar -32);
-
-        } else if (currentChar != ' '){
-             isSolution+= currentChar;
-        }
-
-        }
-
-                
+        for (int i = 0; i < string.length(); i++) {
+            if (!isFirst && string.charAt(i) != ' ') {
+                res += lowcase(string.charAt(i));
+                isFirst = true;
+                Capital = false;
+                continue;
             }
+            if (Capital && string.charAt(i) != ' ') {
+                res += upCase(string.charAt(i));
+                Capital = false;
+            } else if (string.charAt(i) != ' ' && !Capital) {
 
-        return isSolution;
-    }
+                res += lowcase(string.charAt(i));
+
+            }
+            if (string.charAt(i) == ' ') {
+
+                Capital = true;
+            }
+        }
+        return res;
+   
 
     public static int[] allIndexOf (String string, char chr) {
         // Write your code here:
