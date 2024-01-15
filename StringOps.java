@@ -24,102 +24,99 @@ public class Main {
     public static void main(String[] args) {
         
     }
-        public static String capVowelsLowRest(String string) {
-        String vowels = "aioue";
-        String res = "";
-        int size = string.length();
+        public static String capVowelsLowRest (String string) {
+        String isSolution = "";
 
-        for (int i = 0; i < size; i++) {
-            char ch = string.charAt(i);
-            if (ch == ' ') {
-                res = res + ch;
-            } else if (vowels.indexOf(ch) != -1) {
-                if (ch >= 'A' && ch <= 'Z') {
-                    res = res + (char) (ch + ('a' - 'z'));
-                } else {
-                    res = res + ch;
+        for (int j = 0; j < string.length(); j++) {
+            char currentChar = string.charAt(j);
+
+            if(currentChar=='a' || currentChar=='i' || currentChar=='e' ||
+             currentChar=='o' || currentChar=='u'){
+                isSolution += (char)(currentChar - 32);
+            } else if(currentChar=='A' || currentChar=='I' || currentChar=='E' ||
+             currentChar=='O' || currentChar=='U')  {
+                isSolution += currentChar;
+
+
+            } else if (currentChar >= 'A' && currentChar <= 'Z') {
+            isSolution +=  (char)(currentChar + 32);  
+ 
+        } else {
+            isSolution += currentChar; 
+
+       }
+
+   }
+        return isSolution;
+
+ }
+
+    public static String camelCase (String string) {
+       String isSolution = " ";
+       int indexOfSpace = string.indexOf(' ');
+
+       if(indexOfSpace == -1) {
+       for (int i = 0; i < string.length()-1; i++) {
+          char currentChar = string.charAt(i);
+
+         if (currentChar >= 'A' && currentChar <= 'Z') {
+            isSolution +=  (char)(currentChar + 32); 
+         } else { 
+            isSolution += currentChar; 
+         }
+
+        }
+
+    } else{ 
+
+            for (int i = 0; i < indexOfSpace; i++) {
+             char currentChar = string.charAt(i);
+
+         if (currentChar >= 'A' && currentChar <= 'Z') {
+            isSolution +=  (char)(currentChar + 32); 
+         } else { 
+            isSolution += currentChar; 
+         }
+
+        }
+
+        for (int j = 0; j < string.length()-1; j++) {
+          char currentChar = string.charAt(j);
+
+            if(currentChar>0 && string.charAt(currentChar-1) == ' ' && 
+            currentChar >= 'a' && currentChar <= 'z'){
+
+                isSolution += (char)(currentChar -32);
+
+        } else if (currentChar != ' '){
+             isSolution+= currentChar;
+        }
+
+        }
+
+                
+            }
+
+        return isSolution;
+    }
+
+    public static int[] allIndexOf (String string, char chr) {
+        // Write your code here:
+            int count = 0;
+            for (int i = 0; i < string.length(); i++) {
+                if (string.charAt(i) == chr) {
+                count ++;
                 }
-            } else {
-                if (ch >= 'a' && ch <= 'z') {
-                    res = res + (char) (ch + ('A' - 'Z'));
-                } else {
-                    res = res + ch;
+            }
+                int[] result = new int[count];
+                int index =0;
+                for (int i=0; i< string.length(); i++) {
+                    if (string.charAt(i) == chr){
+                        result [index] =i;
+                        index++;
+                    }
                 }
-            }
-        }
-        return res;
-    }
-
-
-
-    public static String camelCase(String string) {
-        boolean isCapitalLetter = false;
-        boolean isFirst = false;
-        String res = "";
-
-        for (int i = 0; i < string.length(); i++) {
-            if (!isFirst && string.charAt(i) != ' ') {
-                res += lowerCase(string.charAt(i));
-                isFirst = true;
-                isCapitalLetter = false;
-                continue;
-            }
-            if (isCapitalLetter && string.charAt(i) != ' ') {
-                res += upperCase(string.charAt(i));
-                isCapitalLetter = false;
-            } else if (string.charAt(i) != ' ' && !isCapitalLetter) {
-
-                res += lowerCase(string.charAt(i));
-
-            }
-            if (string.charAt(i) == ' ') {
-
-                isCapitalLetter = true;
-            }
-
-
-        }
-        return res;
-
-
-    }
-
-
-    private static String capitalizeFirstLetter(String word) {
-        if (word.isEmpty()) {
-            return "";
-        }
-        return Character.toUpperCase(word.charAt(0)) + word.substring(1);
-    }
-
-
-    public static int[] allIndexOf(String str, char ch) {
-        int count = 0;
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == ch) {
-                count++;
-            }
-        }
-        int[] result = new int[count];
-        int index = 0;
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == ch) {
-                result[index++] = i;
-            }
-        }
-
+        
         return result;
-    }
-}
-
-        //private static void printArray(int[] arr) {
-          //  System.out.print("output: {");
-           // for (int i = 0; i < arr.length; i++) {
-           //     System.out.print(arr[i]);
-                if (i < arr.length - 1) {
-            //        System.out.print(", ");
-            //    }
-           // }
-          //  System.out.println("}");
-       // }
-    //}
+        }
+     }
