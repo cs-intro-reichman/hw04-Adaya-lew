@@ -50,65 +50,60 @@ public class StringOps {
         return isSolution;
 
  }
-
-    public class CamelCaseConverter {
-
-    public static void main(String[] args) {
-        //System.out.println(camelcase("Hello World")); // Output: helloWorld
-        //System.out.println(camelcase("HELLO world")); // Output: helloWorld
-        //System.out.println(camelcase(" tWo wordS")); // Output: twoWords
-        //System.out.println(camelcase("world")); // Output: world
-        //System.out.println(camelcase(" Intro to coMPUter sCIEncE ")); // Output: introToComputerScience
+    public static boolean isCapitalLetter(char c) {
+        // Compare ASCII values to check if the character is an uppercase letter
+        return c >= 'A' && c <= 'Z';
     }
 
-    // Rule 1: Convert the first word to lowercase
-    private static String convertFirstWordToLowercase(String input) {
-        if (input == null || input.isEmpty()) {
-            return input;
+    public static char upperCase(char s) {
+        // Check if the character is a lowercase letter before converting
+        if (s >= 'a' && s <= 'z') {
+            return (char) (s - 'a' + 'A');
+        } else {
+            return s; // Return unchanged for non-alphabetic characters
         }
-        return input.trim().toLowerCase();
     }
 
-    // Rule 2: Convert every word to camel case
-    private static String convertToCamelCase(String input) {
-        if (input == null || input.isEmpty()) {
-            return input;
+    public static char lowerCase(char s) {
+        // Check if the character is an uppercase letter before converting
+        if (s >= 'A' && s <= 'Z') {
+            return (char) (s - 'A' + 'a');
+        } else {
+            return s; // Return unchanged for non-alphabetic characters
         }
+    }
 
-        String[] words = input.split(" ");
-        StringBuilder result = new StringBuilder();
+   public static String camelCase(String string) {
+        boolean isCapitalLetter = false;
+        boolean isFirst = false;
+        String res = "";
 
-        for (String word : words) {
-            if (!word.isEmpty()) {
-                result.append(word.substring(0, 1).toUpperCase())
-                      .append(word.substring(1).toLowerCase());
+        for (int i = 0; i < string.length(); i++) {
+            if (!isFirst && string.charAt(i) != ' ') {
+                res += lowerCase(string.charAt(i));
+                isFirst = true;
+                isCapitalLetter = false;
+                continue;
             }
+            if (isCapitalLetter && string.charAt(i) != ' ') {
+                res += upperCase(string.charAt(i));
+                isCapitalLetter = false;
+            } else if (string.charAt(i) != ' ' && !isCapitalLetter) {
+
+                res += lowerCase(string.charAt(i));
+
+            }
+            if (string.charAt(i) == ' ') {
+
+                isCapitalLetter = true;
+            }
+
+
         }
+        return res;
 
-        return result.toString();
-    }
 
-    // Rule 3: Remove all spaces
-    private static String removeSpaces(String input) {
-        if (input == null) {
-            return input;
-        }
-        return input.replaceAll("\\s", "");
-    }
-
-    // Main function implementing all three rules
-    private static String camelcase(String input) {
-        if (input == null || input.isEmpty()) {
-            return input;
-        }
-
-        String firstWordLowercase = convertFirstWordToLowercase(input);
-        String camelCaseWords = convertToCamelCase(firstWordLowercase);
-        String result = removeSpaces(camelCaseWords);
-
-        return result;
-    }
-}
+    }}
    
 
     public static int[] allIndexOf (String string, char chr) {
