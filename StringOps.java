@@ -49,62 +49,59 @@ public class StringOps {
    }
         return isSolution;
 
- }
+    }
     //help camelCase
 
     
     
     public static char upCase(char s) {
-        if (s >= 'a' && s <= 'z') {
-            return (char) (s - 'a' + 'A');
-        } else {
-            return s; 
-        }
+    if (s >= 'a' && s <= 'z') {
+        return (char) (s - 'a' + 'A');
+    } else {
+        return s;
     }
-    
+    }
+
     public static char lowcase(char s) {
-        if (s >= 'A' && s <= 'Z') {
-            return (char) (s - 'A' + 'a');
-        } else {
-            return s; 
-        }
+    if (s >= 'A' && s <= 'Z') {
+        return (char) (s - 'A' + 'a');
+    } else {
+        return s;
     }
-    
-    public static boolean Cap(char c) {
-        return c >= 'A' && c <= 'Z';
     }
 
+    public static boolean Capital(char c) {
+    return c >= 'A' && c <= 'Z';
+    }
 
-    
-    public static String camelCase (String string) {
-        
-         
-        boolean Cap = false;
-        boolean isFirst = false;
-        String res = "";
+    public static String camelCase(String string) {
+    boolean Capital = false;
+    boolean isFirst = false;
+    StringBuilder res = new StringBuilder();
 
-        for (int i = 0; i < string.length(); i++) {
+    for (int i = 0; i < string.length(); i++) {
             if (!isFirst && string.charAt(i) != ' ') {
                 res += lowcase(string.charAt(i));
                 isFirst = true;
-                Cap = false;
+                Capital = false;
                 continue;
             }
-            if (Cap && string.charAt(i) != ' ') {
+            if (Capital && string.charAt(i) != ' ') {
                 res += upCase(string.charAt(i));
-                Cap = false;
-            } else if (string.charAt(i) != ' ' && !Cap) {
+                Capital = false;
+            } else if (string.charAt(i) != ' ' && !Capital) {
 
                 res += lowcase(string.charAt(i));
 
             }
             if (string.charAt(i) == ' ') {
 
-                Cap = true;
+                Capital = true;
             }
         }
         return res;
     }
+    
    
 
     public static int[] allIndexOf (String string, char chr) {
