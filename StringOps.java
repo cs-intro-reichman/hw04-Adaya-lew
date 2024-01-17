@@ -24,7 +24,7 @@ public class StringOps {
     public static void main(String[] args) {
         
     }
-        public static String capVowelsLowRest (String string) {
+        public static String capVowelsLowRest(String string) {
         String res = "";
         for (int i = 0; i < string.length(); i++) {
             char ch= (string.charAt(i));
@@ -55,7 +55,8 @@ public class StringOps {
                             }
                         }
                     }
-                }   
+                }
+            System.out.println(res);   
             return res;
     }
     
