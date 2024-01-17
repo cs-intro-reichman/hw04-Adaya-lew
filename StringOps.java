@@ -30,20 +30,13 @@ public class StringOps {
         for (int j = 0; j < string.length(); j++) {
             char currentChar = string.charAt(j);
 
-            if(currentChar=='A' || currentChar=='I' || currentChar=='E' ||
-             currentChar=='O' || currentChar=='U'){
-                isSolution += (char)(currentChar - 32);
-            } else if(currentChar=='a' || currentChar=='i' || currentChar=='e' ||
+            if(currentChar=='a' || currentChar=='i' || currentChar=='e' ||
              currentChar=='o' || currentChar=='u')  {
-                isSolution += currentChar;
-
-
+                isSolution += (char)(currentChar + 32);;
             } else if (currentChar >= 'A' && currentChar <= 'Z') {
-            isSolution +=  (char)(currentChar + 32);  
- 
+            isSolution +=  (char)(currentChar - 32);  
         } else {
             isSolution += currentChar; 
-
        }
 
    }
@@ -78,20 +71,21 @@ public class StringOps {
     boolean Capital = false;
     boolean isFirst = false;
     StringBuilder res = new StringBuilder();
+    String s = "";
 
     for (int i = 0; i < string.length(); i++) {
             if (!isFirst && string.charAt(i) != ' ') {
-                res += lowcase(string.charAt(i));
+                s += res.lowcase(string.charAt(i));
                 isFirst = true;
                 Capital = false;
                 continue;
             }
             if (Capital && string.charAt(i) != ' ') {
-                res += upCase(string.charAt(i));
+                s += res.upCase(string.charAt(i));
                 Capital = false;
             } else if (string.charAt(i) != ' ' && !Capital) {
 
-                res += lowcase(string.charAt(i));
+                s += res.lowcase(string.charAt(i));
 
             }
             if (string.charAt(i) == ' ') {
@@ -99,7 +93,7 @@ public class StringOps {
                 Capital = true;
             }
         }
-        return res;
+        return s;
     }
     
    
