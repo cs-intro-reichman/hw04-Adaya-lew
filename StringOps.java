@@ -33,10 +33,8 @@ public class StringOps {
             if(currentChar=='a' || currentChar=='i' || currentChar=='e' ||
              currentChar=='o' || currentChar=='u')  {
                 isSolution += upperCase(currentChar);
-            } else if (currentChar >= 'A' && currentChar <= 'Z') {
-            isSolution +=  lowerCase(currentChar);  
-        } else {
-            isSolution += currentChar; 
+            } else {
+            isSolution += lowerCase(currentChar); 
        }
 
    }
