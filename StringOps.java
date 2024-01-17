@@ -32,9 +32,9 @@ public class StringOps {
 
             if(currentChar=='a' || currentChar=='i' || currentChar=='e' ||
              currentChar=='o' || currentChar=='u')  {
-                isSolution += (char)(currentChar + 32);;
+                isSolution += upperCase(currentChar);
             } else if (currentChar >= 'A' && currentChar <= 'Z') {
-            isSolution +=  (char)(currentChar - 32);  
+            isSolution +=  lowerCase(currentChar);  
         } else {
             isSolution += currentChar; 
        }
@@ -71,21 +71,20 @@ public class StringOps {
     boolean Capital = false;
     boolean isFirst = false;
     StringBuilder res = new StringBuilder();
-    String s = "";
 
     for (int i = 0; i < string.length(); i++) {
             if (!isFirst && string.charAt(i) != ' ') {
-                s += res.lowcase(string.charAt(i));
+                res += lowcase(string.charAt(i));
                 isFirst = true;
                 Capital = false;
                 continue;
             }
             if (Capital && string.charAt(i) != ' ') {
-                s += res.upCase(string.charAt(i));
+                res += upCase(string.charAt(i));
                 Capital = false;
             } else if (string.charAt(i) != ' ' && !Capital) {
 
-                s += res.lowcase(string.charAt(i));
+                res += lowcase(string.charAt(i));
 
             }
             if (string.charAt(i) == ' ') {
@@ -93,7 +92,7 @@ public class StringOps {
                 Capital = true;
             }
         }
-        return s;
+        return res;
     }
     
    
