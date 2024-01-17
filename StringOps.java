@@ -24,23 +24,21 @@ public class StringOps {
     public static void main(String[] args) {
         
     }
-        public static String capVowelsLowRest (String string) {
-        String isSolution = "";
-
-        for (int j = 0; j < string.length(); j++) {
-            char currentChar = string.charAt(j);
-
-            if(currentChar=='a' || currentChar=='i' || currentChar=='e' ||
-             currentChar=='o' || currentChar=='u')  {
-                isSolution += upperCase(currentChar);
+        public static String capVowelsLowRest(String string) {
+        String res = "";
+        for (int i = 0; i < string.length(); i++) {
+            char toCheck = lowerCase(string.charAt(i));
+            if (toCheck == 'i' || toCheck == 'e' || toCheck == 'o' || toCheck == 'u' || toCheck == 'a') {
+                char newChar = upperCase(string.charAt(i));
+                res += newChar;
             } else {
-            isSolution += lowerCase(currentChar); 
-       }
-
-   }
-        return isSolution;
-
+                char newChar = lowerCase(string.charAt(i));
+                res += newChar;
+            }
+        }
+        return res;
     }
+
     //help camelCase
 
     
