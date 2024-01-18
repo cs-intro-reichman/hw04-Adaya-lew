@@ -24,40 +24,18 @@ public class StringOps {
     public static void main(String[] args) {
         
     }
-        public static String capVowelsLowRest(String string) {
-        String res = "";
-        for (int i = 0; i < string.length(); i++) {
-            char ch= (string.charAt(i));
-        if(ch == ' '){
-               res = res + ch;
+        public static String capVowelsLowRest(String input) {
+        StringBuilder result = new StringBuilder();
+
+        for (char c : input.toCharArray()) {
+            if ("aeiouAEIOU".indexOf(c) != -1) {
+                result.append(upCase(c));
+            } else {
+                result.append(lowerCase(c) ? c : lowerCase(c));
+            }
         }
-                else{
-                if (ch == 'i' || ch == 'e' || ch == 'o' || ch == 'u' || ch == 'a') {
-                    ch = (char) (ch - 32);
-                    res = res + ch;
-                }                                           
-                    else{
-                        if (ch !='I' && ch !='E' && ch !='O' && ch !='U' && ch !='A') {
-                            if (ch >= 'A' && ch <= 'Z') {
-                            ch = (char) (ch + 32);
-                            res = res + ch;
-                            }
-                            else{
-                                if (ch >= 'a' && ch <= 'z') {
-                                    ch = ch;
-                                    res = res + ch;
-                                }
-                            }           
-                        }
-                        else{
-                            ch = ch;
-                            res = res + ch;
-                            }
-                        }
-                    }
-                }
-            System.out.println(res);   
-            return res;
+
+        return result.toString();
     }
     
     
